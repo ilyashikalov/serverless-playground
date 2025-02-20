@@ -39,3 +39,6 @@ jobs:
           echo "text<<$EOF" >> $GITHUB_OUTPUT
           echo "VERSIONS_DATA=${VERSIONS_DATA}" >> $GITHUB_OUTPUT
           echo "$EOF" >> $GITHUB_OUTPUT
+      - name: Show output
+        run: |
+          echo "Output: ${{ steps.redeployment.outputs.VERSIONS_DATA}}"
