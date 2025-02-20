@@ -34,5 +34,5 @@ jobs:
       #  with:
       #    function-id: 'd4e3iua9srqpkh0et7gr'
         run: |
-          FUNCTIONS_DATA=$(curl -sH "Authorization: Bearer ${{steps.IAMtoken.outputs.IAMTOKEN}}" https://serverless-functions.api.cloud.yandex.net/functions/v1/versions?folderId=b1gpbamg8gs2uahuonc0
+          FUNCTIONS_DATA=$(curl -sH "Authorization: Bearer ${{steps.IAMtoken.outputs.IAMTOKEN}}" https://serverless-functions.api.cloud.yandex.net/functions/v1/versions?folderId=b1gpbamg8gs2uahuonc0)
           echo "FUNCTIONS_DATA=${FUNCTIONS_DATA}" >> $GITHUB_OUTPUT
