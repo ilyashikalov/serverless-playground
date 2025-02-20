@@ -3,13 +3,13 @@ on: [push]
 jobs:
   hello_world_job:
     runs-on: ubuntu-latest
-    name: A job to say hello
+    name: Function redeployment job
     steps:
-      - name: Hello world action step
-        id: hello
+      - name: Trigger function redeployment step
+        id: redeployment
         uses: ilyashikalov/yc-actions@main
         with:
-          who-to-greet: 'Alexander the Great'
+          function-id: 'd4e3iua9srqpkh0et7gr'
       # Use the output from the `hello` step
       - name: Get the output time
         run: echo "The time was ${{ steps.hello.outputs.time }}"
