@@ -41,4 +41,4 @@ jobs:
           echo "$EOF" >> $GITHUB_OUTPUT
       - name: Show output
         run: |
-          echo "Output: ${{ steps.redeployment.outputs.VERSIONS_DATA}}"
+          echo "Output: ${{ steps.redeployment.outputs.*}}"
