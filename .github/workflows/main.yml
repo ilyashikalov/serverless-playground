@@ -37,8 +37,8 @@ jobs:
           VERSIONS_DATA=$(curl -sH "Authorization: Bearer ${{steps.IAMtoken.outputs.IAMTOKEN}}" https://serverless-functions.api.cloud.yandex.net/functions/v1/versions?folderId=b1gpbamg8gs2uahuonc0)
           EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
           echo "text<<$EOF" >> $GITHUB_OUTPUT
-          echo "VERSIONS_DATA=${VERSIONS_DATA}" >> $GITHUB_OUTPUT
+          echo "versions=${VERSIONS_DATA}" >> $GITHUB_OUTPUT
           echo "$EOF" >> $GITHUB_OUTPUT
       - name: Show output
         run: |
-          echo "Output: ${{ steps.redeployment.outputs[0]}}"
+          echo "Output: ${{ steps.redeployment.outputs.versions}}"
