@@ -1,3 +1,3 @@
 # serverless-playground
 
-test
+test2
