@@ -39,5 +39,5 @@ jobs:
       - name: Show output
         run: |
           echo "Output: ${{ steps.redeployment.outputs.versions}}"
-          echo $GITHUB_OUTPUT
+          cat $GITHUB_OUTPUT
 
