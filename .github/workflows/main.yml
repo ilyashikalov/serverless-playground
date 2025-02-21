@@ -37,6 +37,6 @@ jobs:
           echo "versions=${VERSIONS_DATA}" >> $GITHUB_ENV
           echo "$EOF" >> $GITHUB_ENV
           echo ${VERSIONS_DATA}
-#      - name: Show output
-#        run: |
-#          echo "Versions: ${{ steps.redeployment.outputs.versions}}"
+      - name: Show output
+        run: |
+          echo "Versions: ${{ steps.redeployment.outputs.versions}}"
