@@ -1,0 +1,38 @@
+yawl: "0.1"
+start: get_users
+steps:
+  get_users:
+    httpCall:
+      url: 'https://jsonplaceholder.typicode.com/\(.resource_type)'
+      method: GET
+      headers: {}
+      query: {}
+      output: '\({loaded_users: .})'
+      next: process_users
+  process_users:
+    foreach:
+      input: \(.loaded_users)
+      output: '\({loaded_users: .})'
+      next: upload_users
+      do:
+        start: process_user_get_info
+        steps:
+          process_user_get_info:
+            httpCall:
+              url: https://jsonplaceholder.typicode.com/users/\(.id)
+              method: GET
+              headers: {}
+              query: {}
+              next: process_user_transform_info
+              output: '\({user: .})'
+              retryPolicy:
+                retryCount: 2
+                errorList:
+                  - HTTP_CALL_500
+          process_user_transform_info:
+            functionCall:
+              functionId: b09uh584j5nugnkvg5th
+  upload_users:
+    functionCall:
+      functionId: "b090joi9rkgkp473ksf1"
+      input: '\({loaded_users, resource_type})'
